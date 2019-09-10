@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
@@ -9,14 +10,10 @@ using System.Threading.Tasks;
 
 namespace NPoco.Migrations.Tests.NET.ConnectionProviders
 {
-    [TestClass]
+    [TestClass, TestCategory("sqlce")]
     public class SqlCeConnectionProvider : ConnectionProvider<SqlConnection>
     {
-        //Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Test.mdf;Initial Catalog=Test;Integrated Security=True
-        //Data Source=DESKTOP-L3CB7NJ;Initial Catalog=NPocoMigrations;Integrated Security=True;
-        //Server=.\SQLEXPRESS;Database=OpenManagement;User ID=OpenManangement_User;Password=OpenManangement_User
-
-        public SqlCeConnectionProvider() : base(@"Server=.\SQLEXPRESS;Database=NPocoMigrations;User ID=NPocoMigrations;Password=NPocoMigrations", DatabaseType.SQLCe)
+        public SqlCeConnectionProvider() : base(ConfigurationManager.ConnectionStrings["SqlCeConnectionString"].ConnectionString, DatabaseType.SQLCe)
         {
         }
 

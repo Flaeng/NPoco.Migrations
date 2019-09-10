@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Common;
 using System.Data.SQLite;
 using System.Linq;
@@ -9,11 +10,10 @@ using System.Threading.Tasks;
 
 namespace NPoco.Migrations.Tests.NET.ConnectionProviders
 {
-    [TestClass]
+    [TestClass, TestCategory("sqlite")]
     public class SqliteConnectionProvider : ConnectionProvider<SQLiteConnection>
     {
-
-        public SqliteConnectionProvider() : base("Data Source=:memory:;Version=3;", DatabaseType.SQLite)
+        public SqliteConnectionProvider() : base(ConfigurationManager.ConnectionStrings["SqliteConnectionString"].ConnectionString, DatabaseType.SQLite)
         {
         }
 

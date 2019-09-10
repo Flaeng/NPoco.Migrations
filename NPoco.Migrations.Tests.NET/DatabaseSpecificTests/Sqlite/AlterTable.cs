@@ -6,7 +6,7 @@ using NPoco.Migrations.Tests.NET.ConnectionProviders;
 
 namespace NPoco.Migrations.Tests.NET.DatabaseSpecificTests.Sqlite
 {
-    [TestClass]
+    [TestClass, TestCategory("sqlite")]
     public class AlterTable : BaseAlterTableTests<SqliteConnectionProvider>
     {
     }

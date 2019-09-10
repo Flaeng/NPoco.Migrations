@@ -7,7 +7,7 @@ using NPoco.Migrations.Tests.NET.ConnectionProviders;
 
 namespace NPoco.Migrations.Tests.NET.DatabaseSpecificTests.MySql
 {
-    [TestClass]
+    [TestClass, TestCategory("mysql")]
     public class TruncateTable : BaseTruncateTableTests<MySqlConnectionProvider>
     {
 

@@ -7,7 +7,7 @@ using NPoco.Migrations.Tests.NET.ConnectionProviders;
 
 namespace NPoco.Migrations.Tests.NET.DatabaseSpecificTests.Firebird
 {
-    [TestClass]
+    [TestClass, TestCategory("firebird")]
     public class TruncateTable : BaseTruncateTableTests<FirebirdConnectionProvider>
     {
 

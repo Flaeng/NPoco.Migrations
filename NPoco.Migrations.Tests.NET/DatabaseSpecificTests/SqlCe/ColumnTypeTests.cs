@@ -8,7 +8,7 @@ using NPoco.Migrations.Tests.NET.ConnectionProviders;
 
 namespace NPoco.Migrations.Tests.NET.DatabaseSpecificTests.SqlCe
 {
-    [TestClass]
+    [TestClass, TestCategory("sqlce")]
     public class ColumnTypeTests : BaseColumnTypeTests<SqlCeConnectionProvider>
     {
         
