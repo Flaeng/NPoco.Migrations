@@ -88,5 +88,38 @@ namespace NPoco.Migrations.Tests.NET
                 .Execute();
         }
 
+        class AlterTableWithLinqModel
+        {
+            public int Id { get; set; }
+            public string Firstname { get; set; }
+            public string Surname { get; set; }
+        }
+
+        [TestMethod]
+        public virtual void Can_alter_table_with_linq_expressions()
+        {
+            try
+            {
+                migrator.CreateTable("AlterTableWithLinqModel").AddColumn("Id", typeof(int)).Execute();
+            }
+            catch (Exception)
+            {
+                return;
+            }
+
+            migrator.AlterTable<AlterTableWithLinqModel>()
+                .AddColumn(x => x.Firstname)
+                .AddColumn(x => x.Surname)
+                .Execute();
+
+            bool exists = migrator.TableExists("AlterTableWithLinqModel");
+            Assert.IsTrue(exists);
+
+            var columnNames = GetColumnNames("AlterTableWithLinqModel");
+            Assert.IsTrue(columnNames.Contains("Id"));
+            Assert.IsTrue(columnNames.Contains("Firstname"));
+            Assert.IsTrue(columnNames.Contains("Surname"));
+        }
+
     }
 }

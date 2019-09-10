@@ -90,6 +90,7 @@
     <Compile Include="BaseTests\BaseVersionProviderTests.cs" />
     <Compile Include="BaseDropTableTests.cs" />
     <Compile Include="BaseTruncateTableTests.cs" />
+    <Compile Include="ColumnMigratorInfoTests.cs" />
     <Compile Include="ConnectionProviders\ConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\FirebirdConnectionProvider.cs" />
     <Compile Include="ConnectionProviders\MySqlConnectionProvider.cs" />

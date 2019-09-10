@@ -1,12 +1,34 @@
 ﻿using NPoco.Migrations.DatabaseTypes;
+using NPoco.Migrations.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace NPoco.Migrations.QueryProviders
 {
+    public class CreateTableQueryProvider<T> : CreateTableQueryProvider, ICreateTableColumnQueryProvider<T>, ICreateTableQueryProvider<T>
+    {
+        public CreateTableQueryProvider(Database Database, IMigratorDatabaseType MigratorSqlSyntaxProvider, TableMigratorInfo Table) : base(Database, MigratorSqlSyntaxProvider, Table)
+        {
+        }
+
+        public ICreateTableColumnQueryProvider<T> AddColumn<TMember>(Expression<Func<T, TMember>> memberExpression)
+        {
+            var member = memberExpression.GetMember();
+            var column = ColumnMigratorInfo.FromMemberInfo(member);
+            AddColumn(column);
+            return this;
+        }
+
+        public ICreateTableColumnQueryProvider<T> SetPrimaryKey(bool isAutoIncrement)
+        {
+            base.SetPrimaryKey(isAutoIncrement);
+            return this;
+        }
+    }
     public class CreateTableQueryProvider : QueryProvider, ICreateTableColumnQueryProvider, ICreateTableQueryProvider
     {
         public IMigratorDatabaseType MigratorSqlSyntaxProvider { get; }

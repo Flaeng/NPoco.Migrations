@@ -67,11 +67,18 @@ namespace NPoco.Migrations
             return query;
         }
 
-        public ICreateTableQueryProvider CreateTable(string tableName)
+        public ICreateTableQueryProvider CreateTable(TableMigratorInfo tableInfo)
         {
             checkLastQueryProvider();
-            var tableInfo = new TableMigratorInfo { TableName = tableName };
             var result = new CreateTableQueryProvider(Database, MigratorSqlSyntaxProvider, tableInfo);
+            lastQueryProvider = result;
+            return result;
+        }
+
+        public ICreateTableQueryProvider<T> CreateTable<T>(TableMigratorInfo tableInfo)
+        {
+            checkLastQueryProvider();
+            var result = new CreateTableQueryProvider<T>(Database, MigratorSqlSyntaxProvider, tableInfo);
             lastQueryProvider = result;
             return result;
         }
@@ -80,6 +87,14 @@ namespace NPoco.Migrations
         {
             checkLastQueryProvider();
             var result = new AlterTableQueryProvider(Database, MigratorSqlSyntaxProvider, tableName);
+            lastQueryProvider = result;
+            return result;
+        }
+
+        public IAlterTableQueryProvider<T> AlterTable<T>(string tableName)
+        {
+            checkLastQueryProvider();
+            var result = new AlterTableQueryProvider<T>(Database, MigratorSqlSyntaxProvider, tableName);
             lastQueryProvider = result;
             return result;
         }

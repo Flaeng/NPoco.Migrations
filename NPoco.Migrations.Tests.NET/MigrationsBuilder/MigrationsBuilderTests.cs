@@ -31,7 +31,7 @@ namespace NPoco.Migrations.Tests.NET.MigrationsBuilder
         {
             Stack<Version> versions = new Stack<Version>();
 
-            new Migrations.MigrationsBuilder("TestMigration1", Database)
+            new Migrations.MigrationBuilder("TestMigration1", Database)
                 .Append(new Version(1, 0), new Migration(() => versions.Push(new Version(1, 0))))
                 .Execute();
 
@@ -44,11 +44,11 @@ namespace NPoco.Migrations.Tests.NET.MigrationsBuilder
         {
             Stack<Version> versions = new Stack<Version>();
 
-            new Migrations.MigrationsBuilder("TestMigration1_2", Database)
+            new Migrations.MigrationBuilder("TestMigration1_2", Database)
                 .Append(new Version(1, 0), new Migration(() => versions.Push(new Version(1, 0))))
                 .Execute();
 
-            new Migrations.MigrationsBuilder("TestMigration1_2", Database)
+            new Migrations.MigrationBuilder("TestMigration1_2", Database)
                 .Append(new Version(1, 2), new Migration(() => versions.Push(new Version(1, 2))))
                 .Execute();
 
@@ -62,7 +62,7 @@ namespace NPoco.Migrations.Tests.NET.MigrationsBuilder
         {
             Stack<Version> versions = new Stack<Version>();
 
-            new Migrations.MigrationsBuilder("TestMigration2", Database)
+            new Migrations.MigrationBuilder("TestMigration2", Database)
                 .Append(new Version(0, 1), new Migration(() => versions.Push(new Version(0, 1))))
                 .Append(new Version(0, 2), new Migration(() => versions.Push(new Version(0, 2))))
                 .Execute();
@@ -77,7 +77,7 @@ namespace NPoco.Migrations.Tests.NET.MigrationsBuilder
         {
             Stack<Version> versions = new Stack<Version>();
 
-            new Migrations.MigrationsBuilder("TestMigration2", Database)
+            new Migrations.MigrationBuilder("TestMigration2", Database)
                 .Append(new Version(0, 4), new Migration(() => versions.Push(new Version(0, 4))))
                 .Append(new Version(0, 2), new Migration(() => versions.Push(new Version(0, 2))))
                 .Append(new Version(0, 1), new Migration(() => versions.Push(new Version(0, 1))))
@@ -94,7 +94,7 @@ namespace NPoco.Migrations.Tests.NET.MigrationsBuilder
         {
             Stack<Version> versions = new Stack<Version>();
 
-            new Migrations.MigrationsBuilder("TestMigration3", Database)
+            new Migrations.MigrationBuilder("TestMigration3", Database)
                 .Append(new Version(0, 1), new Migration(() => versions.Push(new Version(0, 1))))
                 .Append(new Version(1, 0), new Migration(() => versions.Push(new Version(1, 0))))
                 .Append(new Version(0, 2), new Migration(() => versions.Push(new Version(0, 2))))
@@ -111,7 +111,7 @@ namespace NPoco.Migrations.Tests.NET.MigrationsBuilder
         {
             Stack<Version> versions = new Stack<Version>();
 
-            var migrations = new Migrations.MigrationsBuilder("TestMigration4", Database)
+            var migrations = new Migrations.MigrationBuilder("TestMigration4", Database)
                 .Append(new Version(0, 1), new Migration(() => versions.Push(new Version(0, 1))));
 
             Assert.ThrowsException<Exception>(() => migrations.Append(new Version(0, 1), new Migration(() => versions.Push(new Version(0, 1)))));
@@ -122,11 +122,11 @@ namespace NPoco.Migrations.Tests.NET.MigrationsBuilder
         {
             Stack<Version> versions = new Stack<Version>();
 
-            new Migrations.MigrationsBuilder("TestMigration5", Database)
+            new Migrations.MigrationBuilder("TestMigration5", Database)
                 .Append(new Version(0, 2), new Migration(() => versions.Push(new Version(0, 2))))
                 .Execute();
 
-            new Migrations.MigrationsBuilder("TestMigration5", Database)
+            new Migrations.MigrationBuilder("TestMigration5", Database)
                 .Append(new Version(0, 1), new Migration(() => versions.Push(new Version(0, 1))))
                 .Append(new Version(0, 3), new Migration(() => versions.Push(new Version(0, 3))))
                 .Execute();

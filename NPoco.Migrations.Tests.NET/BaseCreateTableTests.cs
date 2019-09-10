@@ -76,5 +76,29 @@ namespace NPoco.Migrations.Tests.NET
             Assert.IsTrue(tableExists);
         }
 
+        [TableName("CreateTableWithLinqTestModel")]
+        class CreateTableWithLinqModel
+        {
+            public int Id { get; set; }
+            [Column("Givenname")]
+            public string Name { get; set; }
+        }
+
+        [TestMethod]
+        public virtual void Can_create_table_with_linq_expressions()
+        {
+            migrator.CreateTable<CreateTableWithLinqModel>()
+                .AddColumn(x => x.Id)
+                .AddColumn(x => x.Name)
+                .Execute();
+
+            bool exists = migrator.TableExists("CreateTableWithLinqTestModel");
+            Assert.IsTrue(exists);
+
+            var columnNames = GetColumnNames("CreateTableWithLinqTestModel");
+            Assert.IsTrue(columnNames.Contains("Id"));
+            Assert.IsTrue(columnNames.Contains("Givenname"));
+        }
+
     }
 }

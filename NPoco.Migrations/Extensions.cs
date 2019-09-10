@@ -1,6 +1,7 @@
 ﻿using NPoco.Migrations.QueryProviders;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace NPoco.Migrations
@@ -17,11 +18,14 @@ namespace NPoco.Migrations
         public static ICreateTableQueryProvider CreateTable<T>(this Migrator Migrator, bool autoDetectColumns)
             => Migrator.CreateTable(typeof(T), autoDetectColumns);
 
-        public static ICreateTableQueryProvider CreateTable(this Migrator Migrator, TableMigratorInfo tableInfo)
-            => Migrator.CreateTable(tableInfo.TableName);
+        public static ICreateTableQueryProvider<T> CreateTable<T>(this Migrator Migrator)
+            => Migrator.CreateTable<T>(TableMigratorInfo.FromPoco(typeof(T)));
 
-        public static IAlterTableQueryProvider AlterTable<T>(this Migrator Migrator)
-            => Migrator.AlterTable(typeof(T));
+        public static ICreateTableQueryProvider CreateTable(this Migrator Migrator, string tableName)
+            => Migrator.CreateTable(new TableMigratorInfo { TableName = tableName });
+
+        public static IAlterTableQueryProvider<T> AlterTable<T>(this Migrator Migrator)
+            => Migrator.AlterTable<T>(TableMigratorInfo.FromPoco(typeof(T)).TableName);
 
         public static IAlterTableQueryProvider AlterTable(this Migrator Migrator, Type type)
             => Migrator.AlterTable(TableMigratorInfo.FromPoco(type).TableName);

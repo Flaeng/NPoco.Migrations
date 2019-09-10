@@ -2,6 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.1.7</Version>
+    <Authors>Dennis Flaeng</Authors>
+    <Company />
+    <RepositoryUrl>https://github.com/Flaeng/NPoco.Migrations</RepositoryUrl>
+    <Description>Migrate your databases using NPoco</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>

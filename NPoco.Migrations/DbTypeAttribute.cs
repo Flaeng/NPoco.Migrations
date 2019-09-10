@@ -14,12 +14,12 @@ namespace NPoco.Migrations
 
         public static DbTypeAttribute FromMember(MemberInfo member)
         {
-            DbTypeAttribute dbTypeAttribute = member.GetCustomAttribute<DbTypeAttribute>(true);
-            if (dbTypeAttribute != null)
-                return dbTypeAttribute;
+            DbTypeAttribute dbTypeAttribute = member.GetCustomAttribute<DbTypeAttribute>(true) ?? new DbTypeAttribute();
 
-            var type = member.GetMemberInfoType();
-            return new DbTypeAttribute { Type = type };
+            if (dbTypeAttribute.Type == null)
+                dbTypeAttribute.Type = member.GetMemberInfoType();
+
+            return dbTypeAttribute;
         }
     }
 }

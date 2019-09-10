@@ -8,6 +8,10 @@ using System.Text;
 
 namespace NPoco.Migrations.QueryProviders
 {
+    public interface IAlterTableQueryProvider<T> : IAlterTableQueryProvider
+    {
+        IAlterTableColumnQueryProvider<T> AddColumn<TMember>(Expression<Func<T, TMember>> memberExpression);
+    }
     public interface IAlterTableQueryProvider : IQueryProvider
     {
         IAlterTableColumnQueryProvider AddColumn(ColumnMigratorInfo column);

@@ -4,6 +4,7 @@ using NPoco.Migrations.Tests.NET.ConnectionProviders;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -227,6 +228,102 @@ namespace NPoco.Migrations.Tests.NET
             var items = database.Fetch<Column<Guid>>($"SELECT * FROM {database.DatabaseType.EscapeTableName("Guid")}");
             Assert.AreEqual(1, items.Count);
             Assert.AreEqual(id, items.ElementAt(0).Value);
+        }
+
+
+
+        protected class SmallStringModel
+        {
+            public int Id { get; set; }
+
+            [DbType(TypeParameter = "20")]
+            public string SmallString { get; set; }
+        }
+
+        [TestMethod]
+        public virtual void SmallStringModel_Test()
+        {
+            migrator.CreateTable<SmallStringModel>().AddColumn(x => x.Id).AddColumn(x => x.SmallString).Execute();
+            SmallStringModel item;
+
+            database.Insert(new SmallStringModel { SmallString = "" });
+            item = database.Fetch<SmallStringModel>().Last();
+            Assert.AreEqual("", item.SmallString);
+
+            database.Insert(new SmallStringModel { SmallString = "12345" });
+            item = database.Fetch<SmallStringModel>().Last();
+            Assert.AreEqual("12345", item.SmallString);
+
+            database.Insert(new SmallStringModel { SmallString = "12345678901234567890" });
+            item = database.Fetch<SmallStringModel>().Last();
+            Assert.AreEqual("12345678901234567890", item.SmallString);
+        }
+
+        protected class PricisionDecimalModel
+        {
+            public int Id { get; set; }
+
+            [DbType(TypeParameter = "7,4")]
+            public decimal PricisionDecimal { get; set; }
+        }
+
+        [TestMethod]
+        public virtual void PricisionDecimalModel_Test()
+        {
+            migrator.CreateTable<PricisionDecimalModel>().AddColumn(x => x.Id).AddColumn(x => x.PricisionDecimal).Execute();
+            PricisionDecimalModel item;
+
+            database.Insert(new PricisionDecimalModel { PricisionDecimal = 123.4567m });
+            item = database.Fetch<PricisionDecimalModel>().Last();
+            Assert.AreEqual(123.4567m, item.PricisionDecimal);
+        }
+
+        class NullableStringModel
+        {
+            public int Id { get; set; }
+
+            [Nullable]
+            public string NullableString { get; set; }
+        }
+
+        [TestMethod]
+        public void NullableStringModel_Test()
+        {
+            migrator.CreateTable<NullableStringModel>().AddColumn(x => x.Id).AddColumn(x => x.NullableString).Execute();
+
+            database.Insert(new NullableStringModel { NullableString = null });
+            database.Insert(new NullableStringModel { NullableString = null });
+
+            var items = database.Fetch<NullableStringModel>();
+            Assert.AreEqual(2, items.Count);
+            Assert.AreEqual(1, items[0].Id);
+            Assert.IsNull(items[0].NullableString);
+            Assert.AreEqual(2, items[1].Id);
+            Assert.IsNull(items[1].NullableString);
+        }
+
+        class NullableNumberModel
+        {
+            public int Id { get; set; }
+
+            [Nullable]
+            public int? NullableNumber { get; set; }
+        }
+
+        [TestMethod]
+        public void NullableNumberModel_Test()
+        {
+            migrator.CreateTable<NullableNumberModel>().AddColumn(x => x.Id).AddColumn(x => x.NullableNumber).Execute();
+
+            database.Insert(new NullableNumberModel { NullableNumber = null });
+            database.Insert(new NullableNumberModel { NullableNumber = null });
+
+            var items = database.Fetch<NullableNumberModel>();
+            Assert.AreEqual(2, items.Count);
+            Assert.AreEqual(1, items[0].Id);
+            Assert.IsNull(items[0].NullableNumber);
+            Assert.AreEqual(2, items[1].Id);
+            Assert.IsNull(items[1].NullableNumber);
         }
 
     }

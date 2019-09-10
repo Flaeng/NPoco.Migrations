@@ -25,7 +25,7 @@ namespace NPoco.Migrations
         public static ColumnMigratorInfo FromMemberInfo(MemberInfo member)
         {
             ColumnInfo columnInfo = ColumnInfo.FromMemberInfo(member);
-            if (columnInfo.IgnoreColumn)
+            if (columnInfo.IgnoreColumn || columnInfo.ResultColumn)
                 return null;
 
             var type = DbTypeAttribute.FromMember(member);

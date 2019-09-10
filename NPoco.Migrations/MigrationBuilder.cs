@@ -7,24 +7,37 @@ using System.Linq;
 
 namespace NPoco.Migrations
 {
-    public class MigrationsBuilder
+    public class MigrationBuilder
     {
+        private static Func<Database> database = null;
+        public static void Config(Func<Database> database) => MigrationBuilder.database = database;
+
         public static ICurrentVersionProvider CurrentVersionProvider { get; set; }
 
         protected string MigrationName { get; }
         protected Database Database { get; }
+        private bool disposeDatabase = false;
 
         private ICurrentVersionProvider currentVersionProvider => CurrentVersionProvider ?? new DatabaseCurrentVersionProvider(Database);
         private Dictionary<Version, IMigration> migrations { get; } = new Dictionary<Version, IMigration>();
         protected IReadOnlyDictionary<Version, IMigration> Migrations => migrations;
 
-        public MigrationsBuilder(string MigrationName, Database Database)
+        public MigrationBuilder(string MigrationName) : this(MigrationName, MigrationBuilder.database.Invoke(), true)
+        {
+        }
+
+        public MigrationBuilder(string MigrationName, Database Database) : this(MigrationName, Database, false)
+        {
+        }
+
+        private MigrationBuilder(string MigrationName, Database Database, bool disposeDatabase)
         {
             this.MigrationName = MigrationName;
             this.Database = Database;
+            this.disposeDatabase = disposeDatabase;
         }
 
-        public MigrationsBuilder Append(Version version, IMigration migration)
+        public MigrationBuilder Append(Version version, IMigration migration)
         {
             if (migrations.ContainsKey(version))
                 throw new Exception($"{MigrationName} has two or more migrations with version number {version}");
@@ -33,7 +46,7 @@ namespace NPoco.Migrations
             return this;
         }
 
-        public MigrationsBuilder Append<TMigration>(Version version) where TMigration : IMigration, new() => Append(version, new TMigration());
+        public MigrationBuilder Append<TMigration>(Version version) where TMigration : IMigration, new() => Append(version, new TMigration());
 
         public void Execute()
         {
@@ -60,6 +73,9 @@ namespace NPoco.Migrations
                     }
                 }
             }
+
+            if (disposeDatabase)
+                Database.Dispose();
         }
 
     }
