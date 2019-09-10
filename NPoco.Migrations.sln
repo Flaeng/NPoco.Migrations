@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NPoco.Migrations", "NPoco.Migrations\NPoco.Migrations.csproj", "{8ED3E8DB-8CD9-4851-A7AD-CBBCF24358BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPoco.Migrations.Tests.NET", "NPoco.Migrations.Tests.NET\NPoco.Migrations.Tests.NET.csproj", "{0C0BA362-CB48-408A-87D6-A22865723ADF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8ED3E8DB-8CD9-4851-A7AD-CBBCF24358BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ED3E8DB-8CD9-4851-A7AD-CBBCF24358BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ED3E8DB-8CD9-4851-A7AD-CBBCF24358BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ED3E8DB-8CD9-4851-A7AD-CBBCF24358BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C0BA362-CB48-408A-87D6-A22865723ADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C0BA362-CB48-408A-87D6-A22865723ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C0BA362-CB48-408A-87D6-A22865723ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C0BA362-CB48-408A-87D6-A22865723ADF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C43B9460-FF8D-4F7E-B6EF-364C2F3B39F5}
+	EndGlobalSection
+EndGlobal
