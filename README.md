@@ -16,25 +16,25 @@ Please be aware that not all databasetypes that are supported by NPoco is suppor
 
 Current support:
 
-![SqlServer2012 Supported](https://img.shields.io/badge/SqlServer2012-Supported-green)
+![SqlServer2012 Supported](https://img.shields.io/badge/SqlServer2012-Supported-green?style=for-the-badge)
 
-![SqlServer2008 Supported](https://img.shields.io/badge/SqlServer2008-Supported-green)
+![SqlServer2008 Supported](https://img.shields.io/badge/SqlServer2008-Supported-green?style=for-the-badge)
 
-![SqlServer2005 Supported](https://img.shields.io/badge/SqlServer2005-Supported-green)
+![SqlServer2005 Supported](https://img.shields.io/badge/SqlServer2005-Supported-green?style=for-the-badge)
 
-![PostgreSQL Not tested/supported](https://img.shields.io/badge/PostgreSQL-Not%20tested%2Fsupported-red)
+![PostgreSQL Not tested/supported](https://img.shields.io/badge/PostgreSQL-Not%20tested%2Fsupported-red?style=for-the-badge)
 
-![Oracle Not tested/supported](https://img.shields.io/badge/Oracle-Not%20tested%2Fsupported-red)
+![Oracle Not tested/supported](https://img.shields.io/badge/Oracle-Not%20tested%2Fsupported-red?style=for-the-badge)
 
-![OracleManaged Not tested/supported](https://img.shields.io/badge/OracleManaged-Not%20tested%2Fsupported-red)
+![OracleManaged Not tested/supported](https://img.shields.io/badge/OracleManaged-Not%20tested%2Fsupported-red?style=for-the-badge)
 
-![MySQL Not tested/supported](https://img.shields.io/badge/MySQL-Not%20tested%2Fsupported-red)
+![MySQL Not tested/supported](https://img.shields.io/badge/MySQL-Not%20tested%2Fsupported-red?style=for-the-badge)
 
-![SQLite Supported](https://img.shields.io/badge/SQLite-Supported-green)
+![SQLite Supported](https://img.shields.io/badge/SQLite-Supported-green?style=for-the-badge)
 
-![SQLCe Supported](https://img.shields.io/badge/SQLCe-Supported-green)
+![SQLCe Supported](https://img.shields.io/badge/SQLCe-Supported-green?style=for-the-badge)
 
-![Firebird Semi supported](https://img.shields.io/badge/Firebird-Semi%20supported-yellowgreen)
+![Firebird Semi supported](https://img.shields.io/badge/Firebird-Semi%20supported-yellowgreen?style=for-the-badge)
 
 _Firebird cannot handle DateTimeOffset, Guid, Byte[], Char[] and object-column types or autoincremented primary keys yet_
 
