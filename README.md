@@ -1,3 +1,3 @@
 # NPoco.Migrations
 
-[![Build status](https://ci.appveyor.com/api/projects/status/m0cxt9k6nn8dnnsq?svg=true)](https://ci.appveyor.com/project/Flaeng/npoco-migrations)
+[![NuGet](https://img.shields.io/appveyor/ci/Flaeng/npoco-migrations.svg?style=flat&label=appveyor&logo=appveyor&logoColor=FFF)](https://ci.appveyor.com/project/Flaeng/npoco-migrations) [![NuGet](https://img.shields.io/appveyor/tests/Flaeng/npoco-migrations.svg?style=flat&label=appveyor&logo=appveyor&logoColor=FFF)](https://ci.appveyor.com/project/Flaeng/npoco-migrations) [![NuGet](https://img.shields.io/nuget/v/NPoco.Migrations.svg?style=flat&label=nuget&logo=nuget&logoColor=FFF)](https://www.nuget.org/packages/NPoco.Migrations/) [![NuGet](https://img.shields.io/nuget/dt/NPoco.Migrations.svg?style=flat&label=nuget&logo=nuget&logoColor=FFF)](https://www.nuget.org/packages/NPoco.Migrations/)
