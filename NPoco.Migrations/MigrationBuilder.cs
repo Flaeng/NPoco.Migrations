@@ -46,8 +46,6 @@ namespace NPoco.Migrations
             return this;
         }
 
-        public MigrationBuilder Append<TMigration>(Version version) where TMigration : IMigration, new() => Append(version, new TMigration());
-
         public void Execute()
         {
             var currentVersion = currentVersionProvider.GetMigrationVersion(MigrationName);
@@ -76,6 +74,21 @@ namespace NPoco.Migrations
 
             if (disposeDatabase)
                 Database.Dispose();
+        }
+
+    }
+    public static class MigrationBuilderExtensions
+    {
+
+        public static MigrationBuilder Append<TMigration>(this MigrationBuilder builder, Version version) where TMigration : IMigration, new()
+        {
+            return builder.Append(version, new TMigration());
+        }
+
+        public static MigrationBuilder Append<TMigration>(this MigrationBuilder builder) where TMigration : IMigrationVersion, new()
+        {
+            var migration = new TMigration();
+            return builder.Append(migration.Version, migration);
         }
 
     }

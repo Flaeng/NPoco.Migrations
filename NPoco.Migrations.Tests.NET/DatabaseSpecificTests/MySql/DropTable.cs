@@ -7,9 +7,9 @@ using NPoco.Migrations.Tests.NET.ConnectionProviders;
 
 namespace NPoco.Migrations.Tests.NET.DatabaseSpecificTests.MySql
 {
-    [TestClass, TestCategory("mysql")]
-    public class DropTable : BaseDropTableTests<MySqlConnectionProvider>
-    {
+    //[TestClass, TestCategory("mysql")]
+    //public class DropTable : BaseDropTableTests<MySqlConnectionProvider>
+    //{
 
-    }
+    //}
 }

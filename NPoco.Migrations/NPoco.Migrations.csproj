@@ -3,12 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.1.7</Version>
+    <Version>0.3</Version>
     <Authors>Dennis Flaeng</Authors>
     <Company />
     <RepositoryUrl>https://github.com/Flaeng/NPoco.Migrations</RepositoryUrl>
     <Description>Migrate your databases using NPoco</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>NPoco, Migrations, SQL, ServerCE, MySql, Postgresql, sqlite, database</PackageTags>
+    <PackageReleaseNotes>Added better support for SqlServerCE</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

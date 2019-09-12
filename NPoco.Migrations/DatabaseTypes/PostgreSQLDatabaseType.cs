@@ -26,6 +26,8 @@ namespace NPoco.Migrations.DatabaseTypes
             return base.DropTable(tableName);
         }
 
+        //https://documentation.devexpress.com/XPO/400483/Fundamentals/Data-Types-Supported-by-XPO/PostgreSQL-Data-Types-Mapping
+
         public override string ParseDbType(DbType type)
         {
             return base.ParseDbType(type);

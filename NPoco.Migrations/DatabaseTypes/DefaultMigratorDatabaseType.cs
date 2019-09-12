@@ -33,10 +33,10 @@ namespace NPoco.Migrations.DatabaseTypes
 
         public virtual Sql[] AlterTable(string tableName, ColumnMigratorInfo[] columnToAdd)
         {
-            StringBuilder builder = new StringBuilder();
+            List<Sql> sql = new List<Sql>();
             foreach (var item in columnToAdd)
-                builder.Append($"ALTER TABLE {databaseType.EscapeTableName(tableName)} ADD {formatColumn(item)};");
-            return new[] { new Sql(builder.ToString()) };
+                sql.Add(new Sql($"ALTER TABLE {databaseType.EscapeTableName(tableName)} ADD {formatColumn(item)}"));
+            return sql.ToArray();
         }
 
         public virtual Sql[] CreateTable(TableMigratorInfo table, ColumnMigratorInfo[] columns)

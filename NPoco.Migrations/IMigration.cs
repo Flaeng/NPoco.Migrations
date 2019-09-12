@@ -8,4 +8,8 @@ namespace NPoco.Migrations
     {
         void Execute(Migrator Migrator, Database Database);
     }
+    public interface IMigrationVersion : IMigration
+    {
+        Version Version { get; }
+    }
 }

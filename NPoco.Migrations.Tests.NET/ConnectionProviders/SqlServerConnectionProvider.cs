@@ -4,38 +4,17 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Common;
 using System.Data.SqlClient;
-using System.Data.SqlServerCe;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace NPoco.Migrations.Tests.NET.ConnectionProviders
 {
-    [TestClass, TestCategory("sqlce")]
-    public class SqlCeConnectionProvider : ConnectionProvider<SqlCeConnection>
+    [TestClass, TestCategory("sqlserver")]
+    public class SqlServerConnectionProvider : ConnectionProvider<SqlConnection>
     {
-        private readonly static string _dbFilename = "sqlce.sdf";
-        private readonly static string _connectionString = "DataSource=" + _dbFilename;
-
-        public SqlCeConnectionProvider() : base(_connectionString, DatabaseType.SQLCe)
+        public SqlServerConnectionProvider() : base(ConfigurationManager.ConnectionStrings["SqlExpressConnectionString"].ConnectionString, DatabaseType.SQLCe)
         {
-        }
-
-        protected override void PreConnectionOpened()
-        {
-            if (File.Exists("sqlce.sdf"))
-                return;
-
-            using (var engine = new SqlCeEngine(_connectionString))
-                engine.CreateDatabase();
-            base.PreConnectionOpened();
-        }
-
-        public override void Cleanup()
-        {
-            base.Cleanup();
-            File.Delete(_dbFilename);
         }
 
         protected override void PostConnectionOpened()

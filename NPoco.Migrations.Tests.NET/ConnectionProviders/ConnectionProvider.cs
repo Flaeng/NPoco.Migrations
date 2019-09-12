@@ -53,14 +53,19 @@ namespace NPoco.Migrations.Tests.NET.ConnectionProviders
                 if (Database != null)
                     return;
 
+                PreConnectionOpened();
                 if (connection.State != System.Data.ConnectionState.Open)
                     connection.Open();
-                prepareDatabase();
+                PostConnectionOpened();
                 Database = new Database(connection, databaseType);
             }
         }
 
-        protected virtual void prepareDatabase()
+        protected virtual void PreConnectionOpened()
+        {
+        }
+
+        protected virtual void PostConnectionOpened()
         {
         }
 

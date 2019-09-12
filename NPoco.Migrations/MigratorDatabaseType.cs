@@ -15,7 +15,7 @@ namespace NPoco.Migrations
         public static IMigratorDatabaseType OracleManaged => new DefaultMigratorDatabaseType(DatabaseType.OracleManaged);
         public static IMigratorDatabaseType MySQL => new MySqlDatabaseType();
         public static IMigratorDatabaseType SQLite => new SqliteDatabaseType();
-        public static IMigratorDatabaseType SQLCe => new DefaultMigratorDatabaseType(DatabaseType.SQLCe);
+        public static IMigratorDatabaseType SQLCe => new SqlCeDatabaseType();
         public static IMigratorDatabaseType Firebird => new FirebirdMigratorDatabaseType();
 
         public static IMigratorDatabaseType Resolve(DatabaseType databaseType)

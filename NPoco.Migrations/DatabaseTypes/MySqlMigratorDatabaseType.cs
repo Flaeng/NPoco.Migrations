@@ -31,6 +31,7 @@ namespace NPoco.Migrations.DatabaseTypes
             return base.ParseDbType(type);
         }
 
+        //https://documentation.devexpress.com/XPO/400476/Fundamentals/Data-Types-Supported-by-XPO/MySQL-Data-Types-Mapping
         public override string ParseType(Type type, out DbType dbType)
         {
             return base.ParseType(type, out dbType);

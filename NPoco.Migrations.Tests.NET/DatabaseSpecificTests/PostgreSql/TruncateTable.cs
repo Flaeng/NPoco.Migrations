@@ -5,10 +5,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NPoco.Migrations.Tests.NET.BaseTests;
 using NPoco.Migrations.Tests.NET.ConnectionProviders;
 
-namespace NPoco.Migrations.Tests.NET.DatabaseSpecificTests.MySql
+namespace NPoco.Migrations.Tests.NET.DatabaseSpecificTests.PostgreSql
 {
-    //[TestClass, TestCategory("mysql")]
-    //public class TruncateTable : BaseTruncateTableTests<MySqlConnectionProvider>
+    //[TestClass, TestCategory("postgresql")]
+    //public class TruncateTable : BaseTruncateTableTests<PostgreSqlConnectionProvider>
     //{
 
     //}
