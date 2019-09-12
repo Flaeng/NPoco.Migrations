@@ -7,9 +7,9 @@ using NPoco.Migrations.Tests.NET.ConnectionProviders;
 
 namespace NPoco.Migrations.Tests.NET.DatabaseSpecificTests.PostgreSql
 {
-    //[TestClass, TestCategory("postgresql")]
-    //public class DropTable : BaseDropTableTests<PostgreSqlConnectionProvider>
-    //{
+    [TestClass, TestCategory("postgresql")]
+    public class DropTable : BaseDropTableTests<PostgreSqlConnectionProvider>
+    {
 
-    //}
+    }
 }

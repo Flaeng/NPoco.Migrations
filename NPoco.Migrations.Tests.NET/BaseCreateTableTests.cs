@@ -15,6 +15,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public virtual void Fail_on_creating_empty_table()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             string tableName = "test1";
 
             Assert.ThrowsException<Exception>(() => migrator.CreateTable(tableName).Execute());
@@ -26,6 +29,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public virtual void Can_create_simple_table()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             string tableName = "test2";
 
             migrator.CreateTable(tableName)
@@ -39,6 +45,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public virtual void Can_create_primary_key_column_guid()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             string tableName = "test4";
 
             migrator.CreateTable(tableName)
@@ -52,6 +61,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public virtual void Can_create_primary_key_column_int()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             string tableName = "test5";
 
             migrator.CreateTable(tableName)
@@ -65,6 +77,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public virtual void Can_create_multiple_primary_keys()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             string tableName = "test6";
 
             migrator.CreateTable(tableName)
@@ -87,6 +102,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public virtual void Can_create_table_with_linq_expressions()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable<CreateTableWithLinqModel>()
                 .AddColumn(x => x.Id)
                 .AddColumn(x => x.Name)

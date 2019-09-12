@@ -14,21 +14,13 @@ namespace NPoco.Migrations.Tests.NET.ConnectionProviders
     public class FirebirdConnectionProvider : ConnectionProvider<FbConnection>
     {
         private readonly static string connectionStringFormat = ConfigurationManager.ConnectionStrings["FirebirdConnectionString"].ConnectionString;
-
+        
         private string connectionString;
         
         public FirebirdConnectionProvider() : base(getConnectionString(out Guid id), DatabaseType.Firebird)
         {
             connectionString = String.Format(connectionStringFormat, id);
             FbConnection.CreateDatabase(connectionString, true);
-        }
-
-        [TestMethod]
-        public void TestMethod()
-        {
-            FbParameter param = new FbParameter();
-            param.DbType = System.Data.DbType.String;
-            var fbDbType = param.FbDbType;
         }
 
         private static string getConnectionString(out Guid id)

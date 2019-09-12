@@ -16,6 +16,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public virtual void Can_create_simple_table_and_add_column()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             string tableName = "test3";
 
             try

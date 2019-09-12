@@ -22,6 +22,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public void Can_drop_table()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             try
             {
                 migrator.CreateTable(nameof(DropTestModel))

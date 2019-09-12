@@ -14,7 +14,7 @@ namespace NPoco.Migrations.Tests.NET.ConnectionProviders
     [TestClass, TestCategory("postgresql")]
     public class PostgreSqlConnectionProvider : ConnectionProvider<NpgsqlConnection>
     {
-        public PostgreSqlConnectionProvider() : base(ConfigurationManager.ConnectionStrings["PostgreSqlConnectionString"].ConnectionString, DatabaseType.MySQL)
+        public PostgreSqlConnectionProvider() : base(ConfigurationManager.ConnectionStrings["PostgreSqlConnectionString"].ConnectionString, DatabaseType.PostgreSQL)
         {
         }
 

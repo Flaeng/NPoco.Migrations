@@ -25,6 +25,9 @@ namespace NPoco.Migrations.Tests.NET.BaseTests
         public virtual void Initialize()
         {
             connectionProvider.Initialize();
+            if (!connectionProvider.IsSupported)
+                return;
+
             database = connectionProvider.Database;
             migrator = new Migrator(database);
         }

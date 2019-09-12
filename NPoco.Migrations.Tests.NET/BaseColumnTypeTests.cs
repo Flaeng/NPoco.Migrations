@@ -29,6 +29,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public void byte_column_type()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable("byte").AddColumn("Value", typeof(byte)).SetPrimaryKey(false).Execute();
             var min = new Column<byte>(byte.MinValue);
             database.Insert("byte", "Value", false, min);
@@ -39,6 +42,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public void byte_array_column_type()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable("byte_array").AddColumn("byte_array", typeof(byte[])).Execute();
         }
 
@@ -55,6 +61,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public void short_column_type()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable("short").AddColumn("Value", typeof(short)).SetPrimaryKey(false).Execute();
             var min = new Column<short>(short.MinValue);
             database.Insert("short", "Value", false, min);
@@ -75,6 +84,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public void int_column_type()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable("int").AddColumn("Value", typeof(int)).SetPrimaryKey(false).Execute();
             var min = new Column<int>(int.MinValue);
             database.Insert("int", "Value", false, min);
@@ -95,6 +107,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public void long_column_type()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable("long").AddColumn("Value", typeof(long)).SetPrimaryKey(false).Execute();
             var min = new Column<long>(long.MinValue);
             database.Insert("long", "Value", false, min);
@@ -115,6 +130,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public void float_column_type()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable("float").AddColumn("Value", typeof(float)).SetPrimaryKey(false).Execute();
             var min = new Column<float>(float.MinValue);
             database.Insert("float", "Value", false, min);
@@ -125,6 +143,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public void double_column_type()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable("double").AddColumn("Value", typeof(double)).SetPrimaryKey(false).Execute();
             var min = new Column<double>(double.MinValue);
             database.Insert("double", "Value", false, min);
@@ -135,6 +156,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public void decimal_column_type()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable("decimal").AddColumn("Value", typeof(decimal)).SetPrimaryKey(false).Execute();
             var min = new Column<decimal>(-decimal.Parse(String.Join("", Enumerable.Range(0, 13).Select(x => "9"))));
             min.Value -= 0.99m;
@@ -147,6 +171,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public void char_column_type()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable("char").AddColumn("Value", typeof(char)).SetPrimaryKey(false).Execute();
             var min = new Column<char>(char.MinValue);
             database.Insert("char", "Value", false, min);
@@ -164,18 +191,27 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public void char_array_column_type()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable("char_array").AddColumn("char_array", typeof(char[])).Execute();
         }
 
         [TestMethod]
         public void string_column_type()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable("string").AddColumn("string", typeof(string)).Execute();
         }
 
         [TestMethod]
         public void bool_column_type()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable("bool").AddColumn("Value", typeof(bool)).SetPrimaryKey(false).Execute();
             var min = new Column<bool>(false);
             database.Insert("bool", "Value", false, min);
@@ -186,6 +222,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public void object_column_type()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable("object").AddColumn("object", typeof(object)).Execute();
         }
 
@@ -197,6 +236,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public virtual void DateTime_column_type()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable("DateTime").AddColumn("Value", typeof(DateTime)).SetPrimaryKey(false).Execute();
             var min = new Column<DateTime>(DateTime.MinValue);
             database.Insert("DateTime", "Value", false, min);
@@ -207,6 +249,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public void DateTimeOffset_column_type()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable("DateTimeOffset").AddColumn("Value", typeof(DateTimeOffset)).SetPrimaryKey(false).Execute();
             var min = new Column<DateTimeOffset>(DateTimeOffset.MinValue);
             database.Insert("DateTimeOffset", "Value", false, min);
@@ -227,6 +272,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public void Guid_column_type()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable("Guid").AddColumn("Value", typeof(Guid)).Execute();
             Guid id = Guid.NewGuid();
             var item = new Column<Guid>(id);
@@ -250,6 +298,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public virtual void SmallStringModel_Test()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable<SmallStringModel>().AddColumn(x => x.Id).AddColumn(x => x.SmallString).Execute();
             SmallStringModel item;
 
@@ -277,6 +328,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public virtual void PricisionDecimalModel_Test()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable<PricisionDecimalModel>().AddColumn(x => x.Id).AddColumn(x => x.PricisionDecimal).Execute();
             PricisionDecimalModel item;
 
@@ -296,6 +350,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public void NullableStringModel_Test()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable<NullableStringModel>().AddColumn(x => x.Id).AddColumn(x => x.NullableString).Execute();
 
             database.Insert(new NullableStringModel { NullableString = null });
@@ -320,6 +377,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public void NullableNumberModel_Test()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             migrator.CreateTable<NullableNumberModel>().AddColumn(x => x.Id).AddColumn(x => x.NullableNumber).Execute();
 
             database.Insert(new NullableNumberModel { NullableNumber = null });

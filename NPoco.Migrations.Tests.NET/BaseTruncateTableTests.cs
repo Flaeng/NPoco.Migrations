@@ -20,6 +20,9 @@ namespace NPoco.Migrations.Tests.NET
         [TestMethod]
         public void Can_truncate_table()
         {
+            if (!connectionProvider.IsSupported)
+                return;
+
             try
             {
                 var query = migrator.CreateTable(nameof(TruncateTestModel));

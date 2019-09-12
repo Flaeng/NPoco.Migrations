@@ -31,6 +31,8 @@ namespace NPoco.Migrations.Tests.NET.ConnectionProviders
     }
     public abstract class ConnectionProvider
     {
+        private bool? isSupported = null;
+        public bool IsSupported { get => isSupported.Value; }
         public Database Database { get; private set; }
         protected DbConnection connection { get; }
         protected DatabaseType databaseType { get; }
@@ -49,16 +51,30 @@ namespace NPoco.Migrations.Tests.NET.ConnectionProviders
             if (Database != null)
                 return;
 
+            if (isSupported.HasValue && isSupported.Value == false)
+                return;
+
             lock (_syncRoot)
             {
                 if (Database != null)
                     return;
 
-                PreConnectionOpened();
-                if (connection.State != System.Data.ConnectionState.Open)
-                    connection.Open();
-                PostConnectionOpened();
-                Database = new Database(connection, databaseType);
+                if (isSupported.HasValue && isSupported.Value == false)
+                    return;
+
+                try
+                {
+                    PreConnectionOpened();
+                    if (connection.State != System.Data.ConnectionState.Open)
+                        connection.Open();
+                    PostConnectionOpened();
+                    Database = new Database(connection, databaseType);
+                    isSupported = true;
+                }
+                catch (Exception)
+                {
+                    isSupported = false;
+                }
             }
         }
 
