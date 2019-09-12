@@ -43,6 +43,7 @@ namespace NPoco.Migrations.DatabaseTypes
 
         private static Sql[] getAutoIncrementQuery(TableMigratorInfo table)
         {
+            return new Sql[0];
             var generatorTableName = Regex.Replace(table.TableName, "[^A-Za-z]", "_");
             var generatorName = $"gen_{generatorTableName}_id";
 

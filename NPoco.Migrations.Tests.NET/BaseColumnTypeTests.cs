@@ -150,8 +150,15 @@ namespace NPoco.Migrations.Tests.NET
             migrator.CreateTable("char").AddColumn("Value", typeof(char)).SetPrimaryKey(false).Execute();
             var min = new Column<char>(char.MinValue);
             database.Insert("char", "Value", false, min);
-            var max = new Column<char>(char.MaxValue);
-            database.Insert("char", "Value", false, max);
+
+            var a = new Column<char>('a');
+            database.Insert("char", "Value", false, a);
+
+            var Z = new Column<char>('Z');
+            database.Insert("char", "Value", false, Z);
+
+            var percentage = new Column<char>('%');
+            database.Insert("char", "Value", false, percentage);
         }
 
         [TestMethod]

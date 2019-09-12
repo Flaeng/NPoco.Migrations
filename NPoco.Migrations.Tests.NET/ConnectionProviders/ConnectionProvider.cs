@@ -25,7 +25,7 @@ namespace NPoco.Migrations.Tests.NET.ConnectionProviders
         [TestMethod]
         public void Can_connection()
         {
-            connection.Open();
+            Assert.AreEqual(System.Data.ConnectionState.Open, connection.State);
         }
 
     }
@@ -43,6 +43,7 @@ namespace NPoco.Migrations.Tests.NET.ConnectionProviders
             this.databaseType = databaseType;
         }
 
+        [TestInitialize]
         public virtual void Initialize()
         {
             if (Database != null)
@@ -69,6 +70,7 @@ namespace NPoco.Migrations.Tests.NET.ConnectionProviders
         {
         }
 
+        [TestCleanup]
         public virtual void Cleanup()
         {
             Database?.Dispose();

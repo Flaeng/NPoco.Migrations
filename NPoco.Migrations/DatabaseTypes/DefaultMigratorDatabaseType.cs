@@ -186,7 +186,7 @@ namespace NPoco.Migrations.DatabaseTypes
 
                 case DbType.Guid: return "UNIQUEIDENTIFIER";
 
-                case DbType.Object: return "sql_variant";
+                case DbType.Object: return "BINARY";
 
                 case DbType.Time: return "TIME";
 
