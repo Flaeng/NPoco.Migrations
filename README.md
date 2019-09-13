@@ -45,4 +45,4 @@ These are just my priorities - Fell free to submit a pull request that creates s
 1) Firebird support
 2) MySql support
 3) PostgreSQL support
-4) (every else)
+4) (everything else)
